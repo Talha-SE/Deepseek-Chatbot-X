@@ -20,5 +20,6 @@ EOF
 # Make the script executable
 RUN chmod +x /start.sh
 
-# Start using the script
+# Override the entrypoint to use shell directly
+ENTRYPOINT ["/bin/sh"]
 CMD ["/start.sh"]
