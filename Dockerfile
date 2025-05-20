@@ -7,5 +7,6 @@ RUN chmod +x /start.sh
 # Expose default Ollama API port
 EXPOSE 11434
 
-# Start Ollama using script
-CMD ["/bin/sh", "/start.sh"]
+# Override the default ENTRYPOINT and set the startup script
+ENTRYPOINT ["/bin/sh"]
+CMD ["/start.sh"]
