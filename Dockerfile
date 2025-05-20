@@ -7,19 +7,23 @@ EXPOSE 11434
 # Create startup script
 COPY <<EOF /start.sh
 #!/bin/sh
-# Start Ollama in the background
+echo "Starting Ollama service..."
 nohup ollama serve &
-# Wait for Ollama to start (give it a few seconds)
-sleep 5
-# Pull the model (if not already downloaded)
-ollama pull deepseek-chat
-# Bring ollama back to foreground
+echo "Waiting for Ollama service to initialize..."
+sleep 10
+
+# Try to pull the model with correct model ID
+echo "Pulling DeepSeek model..."
+ollama pull deepseek-coder || ollama pull deepseek-ai/deepseek-coder:latest || echo "Warning: Model pull failed, will use on first request"
+
+# Keep ollama running in foreground
+echo "Ollama service is ready"
 wait
 EOF
 
 # Make the script executable
 RUN chmod +x /start.sh
 
-# Override the entrypoint to use shell directly
+# Start using the script
 ENTRYPOINT ["/bin/sh"]
 CMD ["/start.sh"]
