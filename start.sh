@@ -7,11 +7,11 @@ ollama serve &
 echo "⏳ Waiting for Ollama to boot..."
 sleep 10
 
-# Pull the DeepSeek Chat model
-echo "Pulling deepseek-llm:7b-chat..."
-ollama pull deepseek-llm:7b-chat
+# Pull the Mistral model instead of DeepSeek
+echo "Pulling mistral:7b-instruct..."
+ollama pull mistral:7b-instruct
 
-echo "✅ Ollama with DeepSeek Chat is ready to roll!"
+echo "✅ Ollama with Mistral is ready to roll!"
 
 # Keep the container alive
 tail -f /dev/null
