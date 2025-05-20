@@ -8,8 +8,8 @@ echo "⏳ Waiting for Ollama to boot..."
 sleep 10
 
 # Pull the DeepSeek Chat model
-echo "⬇️ Pulling DeepSeek Chat model..."
-ollama pull deepseek-chat
+echo "Pulling deepseek-llm:7b-chat..."
+ollama pull deepseek-llm:7b-chat
 
 echo "✅ Ollama with DeepSeek Chat is ready to roll!"
 
